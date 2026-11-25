@@ -23,6 +23,6 @@ A phase is "done" only when both are completed.
 - [x] Repository structure
 - [x] Virtual environment and dependencies installed (versions pinned in `requirements.txt`)
 - [x] Data download smoke test: all 11 tickers available, common start date 2006-02-06
-- [ ] Git installed, first commit
-- [ ] GitHub repository created and pushed
+- [x] Git installed, first commit
+- [x] GitHub repository created and pushed
 - [ ] Comprehension check: explain the question and H1–H5 in 2 minutes
