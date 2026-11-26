@@ -37,6 +37,9 @@ volatility and correlation? The full scope, hypotheses H1–H5 and safeguards ar
      same Shannon entropy (1 bit), but A is perfectly predictable. Shannon ignores the **order** of
      observations, which motivates permutation entropy.
   4. (Optional) Write `shannon_entropy(probabilities)` in NumPy, handling p = 0.
+- 2026-11-26 (laptop): no lesson work. Cleaned up a virtual environment that had been created at the
+  repository root, which had overwritten the root `.gitignore`. The laptop is now in sync with GitHub
+  and `scripts/check_environment.py` passes.
 - Next: correct the exercises, then lesson 2 (permutation entropy, computed by hand on 8 returns),
   then lesson 3 (spectral entropy of a correlation matrix), then the author's own summary notes.
 
@@ -45,6 +48,9 @@ volatility and correlation? The full scope, hypotheses H1–H5 and safeguards ar
 - Windows; keep the repository on a **short path outside OneDrive** (for example `C:\Users\<user>\Projects`):
   Windows long-path limits break `pip`, and OneDrive sync corrupts `.venv` and `.git`.
 - Python 3.14 virtual environment in `.venv`; dependency versions are pinned in `requirements.txt`.
+  Create it with `python -m venv .venv` from the repository root. Never point `venv` at the root
+  itself: it writes `Lib/`, `Include/`, `pyvenv.cfg` and executables into `scripts/` (Windows ignores
+  case, so `Scripts/` and `scripts/` are the same folder), and it overwrites the root `.gitignore` with `*`.
 - Run `python scripts/check_environment.py` to check the environment and the data download.
 - `data/` is a local cache that is not versioned: re-download it on each machine.
 - Commits use the author's GitHub no-reply e-mail address. Sync between machines through GitHub:
