@@ -5,7 +5,7 @@ A phase is "done" only when both are completed.
 
 | # | Phase | Deliverable | Comprehension check | Status |
 |---|-------|-------------|---------------------|--------|
-| 0 | Scoping and setup | Charter, repository, environment, first commit | Explain the research question and H1–H5 in 2 minutes | 🟡 In progress |
+| 0 | Scoping and setup | Charter, repository, environment, first commit | Explain the research question and H1–H5 in 2 minutes | ✅ Done (2026-11-26) |
 | 1 | Theory | Personal notes: Shannon, permutation and spectral entropy | Compute a permutation entropy by hand on 8 data points | ⬜ |
 | 2 | Data pipeline | `src/entropy_lab/data.py` and tests | Why convert to CHF? What does an adjusted close mean? | ⬜ |
 | 3 | Pillar 1: market disorder (H1, H2, H3) | Notebook and figures | "Why not just use volatility?" | ⬜ |
@@ -25,4 +25,4 @@ A phase is "done" only when both are completed.
 - [x] Data download smoke test: all 11 tickers available, common start date 2006-02-06
 - [x] Git installed, first commit
 - [x] GitHub repository created and pushed
-- [ ] Comprehension check: explain the question and H1–H5 in 2 minutes
+- [x] Comprehension check: explain the question and H1–H5 in 2 minutes
