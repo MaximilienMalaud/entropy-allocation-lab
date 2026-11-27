@@ -30,18 +30,23 @@ volatility and correlation? The full scope, hypotheses H1–H5 and safeguards ar
 
 ## Current status
 
-- **Phase 1, lesson 1 (Shannon entropy) taught on 2026-11-26.** Exercises pending:
-  1. Biased coin p = 0.9: compute H and compare with a fair coin.
-  2. 20 days: 4 down, 6 flat, 10 up: compute H and normalised H.
-  3. Series A (`+1,-1` alternating) vs series B (same ups and downs in irregular order): same volatility,
-     same Shannon entropy (1 bit), but A is perfectly predictable. Shannon ignores the **order** of
-     observations, which motivates permutation entropy.
-  4. (Optional) Write `shannon_entropy(probabilities)` in NumPy, handling p = 0.
+- **Phase 1, lesson 1 (Shannon entropy) taught on 2026-11-26.**
 - 2026-11-26 (laptop): no lesson work. Cleaned up a virtual environment that had been created at the
   repository root, which had overwritten the root `.gitignore`. The laptop is now in sync with GitHub
   and `scripts/check_environment.py` passes.
-- Next: correct the exercises, then lesson 2 (permutation entropy, computed by hand on 8 returns),
-  then lesson 3 (spectral entropy of a correlation matrix), then the author's own summary notes.
+- 2026-11-27 (desktop): exercises 1–3 done.
+  - Ex. 1: H = 0.469 bit.
+  - Ex. 2: H = 1.485 bit, normalised 0.937, which is close to maximum disorder even with 50% up days.
+  - Ex. 3: Shannon entropy and volatility both ignore the **order** of observations
+    (the "bag of marbles" image).
+  - Code is written in VS Code with Jupyter notebooks, not in the PowerShell REPL.
+  - Exercise 4 is in `notebooks/01_shannon_entropy.ipynb` (steps 1–3 ready to run).
+- **Next session:** the author completes the notebook's mini-challenge
+  (`normalized_shannon_entropy`, where n counts **all** outcomes, zeros included; expected 0.937 for
+  `[0.2, 0.3, 0.5]`). Then lesson 2 (permutation entropy, computed by hand on 8 returns, reusing series
+  A and B), lesson 3 (spectral entropy of a correlation matrix), and the author's own summary notes.
+- Teaching style: concrete images, worked tables and step-by-step guidance; prefer simple yes/no
+  questions to open fill-in-the-blank prompts.
 
 ## Technical setup
 
