@@ -145,3 +145,57 @@ def normalized_shannon_entropy(probabilities):
 - La routine sur deux PC : `git pull` en commençant, puis commit et `git push` en terminant.
 
 Notebook : `notebooks/01_shannon_entropy.ipynb`
+
+---
+
+### Leçon 2 : l'entropie de permutation (28/11/2026, en cours)
+
+*La théorie et l'exercice à la main sont faits ; le code reste à faire.*
+
+#### L'idée
+
+Au lieu de compter des billes dans un sac, comme le fait Shannon, on regarde **la forme de petits morceaux de la série**. L'entropie de permutation (Bandt & Pompe, 2002) voit donc l'**ordre** des observations.
+
+#### Les 6 motifs de 3 jours
+
+Il y a 3! = 6 façons de ranger 3 nombres. On reconnaît un motif en se posant **deux questions** :
+1. **Quelle allure ?** Montée, descente, pic ou creux.
+2. **Pour un pic ou un creux : où finit le 3ᵉ jour par rapport au 1er ?** Plus haut ou plus bas.
+
+| N° | Motif | Allure | Exemple |
+|---|---|---|---|
+| ① | Montée | ↗↗ | 1, 2, 3 |
+| ② | Descente | ↘↘ | 3, 2, 1 |
+| ③ | Pic, finit plus haut | ↗↘ | 1, 3, 2 |
+| ④ | Pic, finit plus bas | ↗↘ | 2, 3, 1 |
+| ⑤ | Creux, finit plus haut | ↘↗ | 2, 1, 3 |
+| ⑥ | Creux, finit plus bas | ↘↗ | 3, 1, 2 |
+
+#### La méthode en 3 étapes
+
+1. **Faire glisser une fenêtre de 3 jours** le long de la série, en avançant d'un jour à chaque fois. N valeurs donnent **N − 2 fenêtres**.
+2. **Classer** chaque fenêtre dans l'un des 6 motifs, puis **compter** les fréquences.
+3. **Appliquer la formule de Shannon** aux fréquences des motifs. Le maximum vaut log₂(6) = **2,585 bits**, et on normalise en divisant par ce nombre.
+
+C'est la même formule que Shannon, mais appliquée aux **motifs** au lieu des états.
+
+#### Les résultats de référence
+
+| Série | Motifs | H | Entropie normalisée |
+|---|---|---|---|
+| 1, 2, 3, …, 8 | un seul (①), p = 1 | 0 | **0** : ordre parfait |
+| 4, 7, 9, 10, 6, 11 (exemple corrigé) | ① ×2, ④ ×1, ⑤ ×1 | 1,5 bit | 0,580 |
+| 3, 5, 2, 8, 9, 4, 6, 7 (mon exercice) | ① ×2, ④ ×2, ⑤ ×1, ⑥ ×1 | 1,918 bit | **0,742** |
+| Une longue série aléatoire | les 6 motifs à fréquences égales | ≈ 2,585 bits | ≈ 1 : désordre maximal |
+
+- L'entropie normalisée **n'a pas d'unité** : on divise des bits par des bits.
+- Valeurs utiles : log₂(1/3) = −1,585 et log₂(1/6) = −2,585.
+
+#### Les leçons clés pour le projet
+
+1. **Elle est insensible à l'amplitude.** Multiplier toute la série par 10 ne change aucun motif, donc aucune entropie. Un krach de −10 % compte comme un jour de baisse ordinaire. Elle est donc **robuste aux queues épaisses et aux valeurs extrêmes**, alors qu'une seule valeur extrême peut faire exploser une volatilité. C'est ce qui la rend **complémentaire de la volatilité**.
+2. **Une séquence parfaitement régulière a une entropie nulle.** C'est l'intuition de **H1** : en période de stress, les séquences de rendements deviendraient plus régulières, et l'entropie de permutation baisserait.
+3. **Elle distingue les séries A et B**, là où Shannon et la volatilité échouent. C'est à vérifier dans le code.
+4. **Les égalités** (plusieurs fois la même valeur dans une fenêtre) demandent une règle pour départager les valeurs. Elles sont rares sur de vrais rendements, mais présentes dans les séries A et B.
+
+**À dire en entretien** : *« L'entropie de permutation ne regarde que l'ordre relatif des rendements, jamais leur taille. Elle est donc robuste aux valeurs extrêmes, et elle capte des régularités de séquence que la volatilité ne voit pas. »*

@@ -46,9 +46,22 @@ volatility and correlation? The full scope, hypotheses H1–H5 and safeguards ar
   - Code is written in VS Code with Jupyter notebooks, not in the PowerShell REPL.
   - Exercise 4 is in `notebooks/01_shannon_entropy.ipynb` (steps 1–3 ready to run).
 - 2026-11-28 (desktop): mini-challenge `normalized_shannon_entropy` done and correct. **Lesson 1 is
-  complete.** `docs/JOURNAL_APPRENTISSAGE.md` was created. Lesson 2 started.
-- **Next:** lesson 2 (permutation entropy, computed by hand on 8 returns, reusing series
-  A and B), lesson 3 (spectral entropy of a correlation matrix), and the author's own summary notes.
+  complete.** `docs/JOURNAL_APPRENTISSAGE.md` was created.
+- 2026-11-28 (desktop): **Lesson 2 (permutation entropy, m = 3), theory and hand calculation done.**
+  The 6 patterns are named ① rise, ② fall, ③ peak ending higher, ④ peak ending lower,
+  ⑤ trough ending higher, ⑥ trough ending lower. Hand exercise on `3,5,2,8,9,4,6,7`: H = 1.918 bit,
+  normalised 0.742 (correct). Understood: invariance to scale (×10), and a monotonic series gives 0.
+  The journal has a "Leçon 2" section marked "en cours".
+- **Next (the author will resume on the laptop):** prepare `notebooks/02_permutation_entropy.ipynb`
+  on the same model as notebook 01 (building blocks first, then the function, then checks against
+  the hand results, then a mini-challenge). The checks to include:
+  (1) reproduce 0.742 on `[3,5,2,8,9,4,6,7]` and 0.580 on `[4,7,9,10,6,11]`;
+  (2) the same value after multiplying the series by 10;
+  (3) series A (`+1,-1` alternating) versus series B (`+1,+1,-1,+1,-1,-1,-1,+1,+1,-1`), which contain
+      ties: break them by order of appearance (`np.argsort(..., kind="stable")`) and explain this rule;
+  (4) shuffling a series changes its permutation entropy but not its Shannon entropy.
+  Then complete the journal's "Leçon 2" section, then lesson 3 (spectral entropy of a correlation
+  matrix), then the author's own summary notes.
 - Teaching style: concrete images, worked tables and step-by-step guidance; prefer simple yes/no
   questions to open fill-in-the-blank prompts.
 
