@@ -27,6 +27,10 @@ volatility and correlation? The full scope, hypotheses H1–H5 and safeguards ar
 4. **Log decisions** in `docs/DECISIONS.md` (`D###`, with *Why* and *Alternatives*).
 5. **The CFA comes first**: about 5 hours per week on the project until the exam.
 6. Update the status in `docs/ROADMAP.md` when a step is finished.
+7. **Keep `docs/JOURNAL_APPRENTISSAGE.md` up to date** (in French). After each lesson or comprehension
+   check, add what the author learned: intuition, formulas, reference results, key takeaways for the
+   project, interview phrasing, Python learned, common pitfalls (written generically) and environment
+   tips. The author asked for this file explicitly; it is the author's revision support.
 
 ## Current status
 
@@ -41,9 +45,9 @@ volatility and correlation? The full scope, hypotheses H1–H5 and safeguards ar
     (the "bag of marbles" image).
   - Code is written in VS Code with Jupyter notebooks, not in the PowerShell REPL.
   - Exercise 4 is in `notebooks/01_shannon_entropy.ipynb` (steps 1–3 ready to run).
-- **Next session:** the author completes the notebook's mini-challenge
-  (`normalized_shannon_entropy`, where n counts **all** outcomes, zeros included; expected 0.937 for
-  `[0.2, 0.3, 0.5]`). Then lesson 2 (permutation entropy, computed by hand on 8 returns, reusing series
+- 2026-11-28 (desktop): mini-challenge `normalized_shannon_entropy` done and correct. **Lesson 1 is
+  complete.** `docs/JOURNAL_APPRENTISSAGE.md` was created. Lesson 2 started.
+- **Next:** lesson 2 (permutation entropy, computed by hand on 8 returns, reusing series
   A and B), lesson 3 (spectral entropy of a correlation matrix), and the author's own summary notes.
 - Teaching style: concrete images, worked tables and step-by-step guidance; prefer simple yes/no
   questions to open fill-in-the-blank prompts.
